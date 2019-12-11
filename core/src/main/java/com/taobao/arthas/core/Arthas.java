@@ -120,6 +120,7 @@ public class Arthas {
 
     public static void main(String[] args) {
         try {
+            args = new String[]{"-jar", "/Users/yaoqijun/.arthas/lib/3.1.7/arthas/arthas-core.jar", "-pid", "39298", "-target-ip", "127.0.0.1", "-telnet-port", "3658", "-http-port", "8563", "-core", "/Users/yaoqijun/.arthas/lib/3.1.7/arthas/arthas-core.jar", "-agent", "/Users/yaoqijun/.arthas/lib/3.1.7/arthas/arthas-agent.jar"};
             new Arthas(args);
         } catch (Throwable t) {
             AnsiLog.error("Start arthas failed, exception stack trace: ");

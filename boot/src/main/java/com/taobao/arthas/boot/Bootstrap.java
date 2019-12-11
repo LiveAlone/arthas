@@ -259,6 +259,7 @@ public class Bootstrap {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException,
                     ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException,
                     IllegalArgumentException, InvocationTargetException {
+
         Package bootstrapPackage = Bootstrap.class.getPackage();
         if (bootstrapPackage != null) {
             String arthasBootVersion = bootstrapPackage.getImplementationVersion();
@@ -465,7 +466,7 @@ public class Bootstrap {
         if (telnetPortPid > 0 && pid == telnetPortPid) {
             AnsiLog.info("The target process already listen port {}, skip attach.", bootstrap.getTelnetPort());
         } else {
-            // start arthas-core.jar
+             // start arthas-core.jar
             List<String> attachArgs = new ArrayList<String>();
             attachArgs.add("-jar");
             attachArgs.add(new File(arthasHomeDir, "arthas-core.jar").getAbsolutePath());
@@ -500,7 +501,7 @@ public class Bootstrap {
             }
 
             AnsiLog.info("Try to attach process " + pid);
-            AnsiLog.debug("Start arthas-core.jar args: " + attachArgs);
+            AnsiLog.info("Start arthas-core.jar args: " + attachArgs);
             ProcessUtils.startArthasCore(pid, attachArgs);
 
             AnsiLog.info("Attach process {} success.", pid);
@@ -540,7 +541,7 @@ public class Bootstrap {
         telnetArgs.add("" + bootstrap.getTelnetPort());
 
         AnsiLog.info("arthas-client connect {} {}", bootstrap.getTargetIp(), bootstrap.getTelnetPort());
-        AnsiLog.debug("Start arthas-client.jar args: " + telnetArgs);
+        AnsiLog.info("Start arthas-client.jar args: " + telnetArgs);
 
         // fix https://github.com/alibaba/arthas/issues/833
         Thread.currentThread().setContextClassLoader(classLoader);
